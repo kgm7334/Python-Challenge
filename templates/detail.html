@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+    NomadNews|{{result.Title}}
+  </title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <div>
+      {{result.Point}} points | By {{result.Author}} | <a href="{{result.URL}}" target="_blank">{{result.URL}}</a>
+    </div>
+  </header>
+  <main>
+    {% for comment in result.Children %}
+      <div>
+        {% if comment.author == None%}
+          [deleted]
+        {% else %}
+          <strong>{{comment.author}}:</strong>
+          <p>{{comment.text | safe}}</p>
+        {% endif %}
+      </div>
+      <hr />
+    {% endfor %}
+  </main>
+</body>
+
+</html>
